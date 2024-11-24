@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Biocosmist Sword Viewer | Spencience</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biocosmist Sword Viewer | Spencience</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
         .pixel-border {
             image-rendering: pixelated;
             border: 2px solid #342;
@@ -23,78 +23,93 @@
         #sword-canvas {
             animation: float 3s ease-in-out infinite;
         }
+        .control-slider {
+            width: 100%;
+            margin: 10px 0;
+            -webkit-appearance: none;
+            background: #2d3748;
+            height: 8px;
+            border-radius: 4px;
+            outline: none;
+        }
+        .control-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #59b395;
+            border-radius: 50%;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-green-300">
-<nav class="p-4 bg-gray-800">
-<div class="container mx-auto flex justify-between items-center">
-<a href="https://spencience.com" class="text-2xl font-bold glow-text">Spencience</a>
-<div class="space-x-4">
-<a href="https://spencience.com/catalog?category=weapons" class="hover:text-green-400">Weapon Catalog</a>
-<a href="https://spencience.com/about/biocosmism" class="hover:text-green-400">About Biocosmism</a>
-<a href="https://spencience.com/community" class="hover:text-green-400">Community</a>
-</div>
-</div>
-</nav>
-<main class="container mx-auto p-8">
-<header class="text-center mb-8">
-<h1 class="text-4xl font-bold mb-4 glow-text">Transcendent Sword Viewer</h1>
-<p class="text-xl">Explore the convergence of medieval craftsmanship and cosmic consciousness</p>
-</header>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-<div class="pixel-border bg-gray-800 p-4 rounded-lg">
-<canvas id="sword-canvas" class="w-full h-96"></canvas>
-</div>
-<div class="space-y-6">
-<div class="bg-gray-800 p-6 rounded-lg pixel-border">
-<h2 class="text-2xl font-bold mb-4">Sword Specifications</h2>
-<ul class="space-y-2">
-<li>Material: Stellar-forged steel</li>
-<li>Length: 42 quantum units</li>
-<li>Weight: 1.618 cosmic masses</li>
-<li>Resonance: Phi-harmonic</li>
-<li>Consciousness Rating: 89%</li>
-</ul>
-</div>
-<div class="bg-gray-800 p-6 rounded-lg pixel-border">
-<h2 class="text-2xl font-bold mb-4">Biocosmist Properties</h2>
-<p>This sword embodies the principles of biocosmist philosophy, featuring quantum-entangled particles that resonate with the wielder's consciousness. The blade serves as a bridge between medieval martial traditions and posthuman evolution.</p>
-</div>
-<div class="flex space-x-4">
-<a href="https://spencience.com/sword-model/customize?id=transcendent" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg flex-1 text-center">Customize Sword</a>
-<a href="https://spencience.com/sword-model/export?format=consciousness" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg flex-1 text-center">Export to Consciousness</a>
-</div>
-</div>
-</div>
-<section class="mt-12">
-<h2 class="text-2xl font-bold mb-4">Related Artifacts</h2>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<a href="https://spencience.com/sword-model?type=shield&style=quantum" class="bg-gray-800 p-4 rounded-lg pixel-border hover:bg-gray-700">
-<h3 class="text-xl font-bold">Quantum Shield</h3>
-<p>Probability-warping defense</p>
-</a>
-<a href="https://spencience.com/sword-model?type=armor&style=cosmic" class="bg-gray-800 p-4 rounded-lg pixel-border hover:bg-gray-700">
-<h3 class="text-xl font-bold">Cosmic Armor</h3>
-<p>Stellar-powered protection</p>
-</a>
-<a href="https://spencience.com/sword-model?type=pendant&style=neural" class="bg-gray-800 p-4 rounded-lg pixel-border hover:bg-gray-700">
-<h3 class="text-xl font-bold">Neural Pendant</h3>
-<p>Consciousness amplifier</p>
-</a>
-</div>
-</section>
-</main>
-<footer class="bg-gray-800 mt-12 p-8">
-<div class="container mx-auto text-center">
-<p>© 2024 Spencience - Bridging Medieval Wisdom and Cosmic Evolution</p>
-<div class="mt-4">
-<a href="https://spencience.com/terms" class="hover:text-green-400 mx-2">Terms of Service</a>
-<a href="https://spencience.com/privacy" class="hover:text-green-400 mx-2">Privacy Policy</a>
-<a href="https://spencience.com/consciousness-agreement" class="hover:text-green-400 mx-2">Consciousness Agreement</a>
-</div>
-</div>
-</footer>
-<script>
+    <nav class="p-4 bg-gray-800">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="https://spencience.com" class="text-2xl font-bold glow-text">Spencience</a>
+            <div class="space-x-4">
+                <a href="https://spencience.com/catalog?category=weapons" class="hover:text-green-400">Weapon Catalog</a>
+                <a href="https://spencience.com/about/biocosmism" class="hover:text-green-400">About Biocosmism</a>
+                <a href="https://spencience.com/community" class="hover:text-green-400">Community</a>
+            </div>
+        </div>
+    </nav>
+    <main class="container mx-auto p-8">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold mb-4 glow-text">Transcendent Sword Viewer</h1>
+            <p class="text-xl">Explore the convergence of medieval craftsmanship and cosmic consciousness</p>
+        </header>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="pixel-border bg-gray-800 p-4 rounded-lg">
+                <canvas id="sword-canvas" class="w-full h-96"></canvas>
+                <div class="mt-4 space-y-4">
+                    <div>
+                        <label class="block mb-2">Blade Length</label>
+                        <input type="range" id="length-control" class="control-slider" min="2" max="6" step="0.1" value="4">
+                    </div>
+                    <div>
+                        <label class="block mb-2">Blade Width</label>
+                        <input type="range" id="width-control" class="control-slider" min="0.1" max="2" step="0.1" value="1">
+                    </div>
+                    <div>
+                        <label class="block mb-2">Blade Thickness</label>
+                        <input type="range" id="thickness-control" class="control-slider" min="0.1" max="0.5" step="0.05" value="0.1">
+                    </div>
+                </div>
+            </div>
+            <div class="space-y-6">
+                <div class="bg-gray-800 p-6 rounded-lg pixel-border">
+                    <h2 class="text-2xl font-bold mb-4">Sword Specifications</h2>
+                    <ul class="space-y-2">
+                        <li>Material: Stellar-forged steel</li>
+                        <li>Length: <span id="length-display">42</span> quantum units</li>
+                        <li>Width: <span id="width-display">1.0</span> cosmic units</li>
+                        <li>Thickness: <span id="thickness-display">0.1</span> void measures</li>
+                        <li>Resonance: Phi-harmonic</li>
+                        <li>Consciousness Rating: 89%</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg pixel-border">
+                    <h2 class="text-2xl font-bold mb-4">Biocosmist Properties</h2>
+                    <p>This sword embodies the principles of biocosmist philosophy, featuring quantum-entangled particles that resonate with the wielder's consciousness. The blade serves as a bridge between medieval martial traditions and posthuman evolution.</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://spencience.com/sword-model/customize?id=transcendent" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg flex-1 text-center">Save Design</a>
+                    <a href="https://spencience.com/sword-model/export?format=consciousness" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg flex-1 text-center">Export to Consciousness</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-gray-800 mt-12 p-8">
+        <div class="container mx-auto text-center">
+            <p>© 2024 Spencience - Bridging Medieval Wisdom and Cosmic Evolution</p>
+            <div class="mt-4">
+                <a href="https://spencience.com/terms" class="hover:text-green-400 mx-2">Terms of Service</a>
+                <a href="https://spencience.com/privacy" class="hover:text-green-400 mx-2">Privacy Policy</a>
+                <a href="https://spencience.com/consciousness-agreement" class="hover:text-green-400 mx-2">Consciousness Agreement</a>
+            </div>
+        </div>
+    </footer>
+    <script>
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({
@@ -122,6 +137,22 @@
 
         camera.position.z = 5;
 
+        // Control handlers
+        document.getElementById('length-control').addEventListener('input', (e) => {
+            sword.scale.y = parseFloat(e.target.value);
+            document.getElementById('length-display').textContent = (parseFloat(e.target.value) * 10.5).toFixed(1);
+        });
+
+        document.getElementById('width-control').addEventListener('input', (e) => {
+            sword.scale.x = parseFloat(e.target.value);
+            document.getElementById('width-display').textContent = parseFloat(e.target.value).toFixed(1);
+        });
+
+        document.getElementById('thickness-control').addEventListener('input', (e) => {
+            sword.scale.z = parseFloat(e.target.value);
+            document.getElementById('thickness-display').textContent = parseFloat(e.target.value).toFixed(2);
+        });
+
         function animate() {
             requestAnimationFrame(animate);
             sword.rotation.y += 0.01;
@@ -136,38 +167,5 @@
             camera.updateProjectionMatrix();
         });
     </script>
-</body>
-</html>
-</html>
-</body> and </html> tags. The only minor issue is an extra </html>
-</html> tag that should be removed. Here's the corrected ending portion:
-
-```html
-</body>
-</html>
-```
-
-The HTML document already contains:
-1. Complete ThreeJS 3D sword viewer implementation
-2. Full responsive design with Tailwind CSS
-3. All interactive features (3D model rotation, responsive canvas)
-4. Proper structure and styling
-5. All necessary closing tags
-6. Complete JavaScript implementation for the 3D viewer
-7. All required CDN imports
-
-No additional code is needed - just remove the extra </html>
-</body>
-</html>
-</body>
-</html>
-</body>
-</html>
-</body>
-</html>
-</body>
-</html>
-</body>
-</html>
 </body>
 </html>
