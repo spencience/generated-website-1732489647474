@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive 3D viewer for biocosmist swords - Explore and customize quantum-enhanced medieval weaponry with consciousness integration">
     <title>Biocosmist Sword Viewer | Spencience</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -43,7 +44,7 @@
     </style>
 </head>
 <body class="bg-gray-900 text-green-300">
-    <nav class="p-4 bg-gray-800">
+    <nav class="p-4 bg-gray-800" role="navigation" aria-label="Main navigation">
         <div class="container mx-auto flex justify-between items-center">
             <a href="https://spencience.com" class="text-2xl font-bold glow-text">Spencience</a>
             <div class="space-x-4">
@@ -53,26 +54,30 @@
             </div>
         </div>
     </nav>
-    <main class="container mx-auto p-8">
+    <main class="container mx-auto p-8" role="main">
         <header class="text-center mb-8">
             <h1 class="text-4xl font-bold mb-4 glow-text">Transcendent Sword Viewer</h1>
             <p class="text-xl">Explore the convergence of medieval craftsmanship and cosmic consciousness</p>
         </header>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="pixel-border bg-gray-800 p-4 rounded-lg">
-                <canvas id="sword-canvas" class="w-full h-96"></canvas>
+                <canvas id="sword-canvas" class="w-full h-96" role="img" aria-label="3D interactive sword model viewer"></canvas>
                 <div class="mt-4 space-y-4">
                     <div>
-                        <label class="block mb-2">Blade Length</label>
-                        <input type="range" id="length-control" class="control-slider" min="2" max="6" step="0.1" value="4">
+                        <label for="length-control" class="block mb-2">Blade Length</label>
+                        <input type="range" id="length-control" class="control-slider" min="2" max="6" step="0.1" value="4" aria-label="Adjust blade length">
                     </div>
                     <div>
-                        <label class="block mb-2">Blade Width</label>
-                        <input type="range" id="width-control" class="control-slider" min="0.1" max="2" step="0.1" value="1">
+                        <label for="width-control" class="block mb-2">Blade Width</label>
+                        <input type="range" id="width-control" class="control-slider" min="0.1" max="2" step="0.1" value="1" aria-label="Adjust blade width">
                     </div>
                     <div>
-                        <label class="block mb-2">Blade Thickness</label>
-                        <input type="range" id="thickness-control" class="control-slider" min="0.1" max="0.5" step="0.05" value="0.1">
+                        <label for="thickness-control" class="block mb-2">Blade Thickness</label>
+                        <input type="range" id="thickness-control" class="control-slider" min="0.1" max="0.5" step="0.05" value="0.1" aria-label="Adjust blade thickness">
+                    </div>
+                    <div>
+                        <label for="color-control" class="block mb-2">Blade Color</label>
+                        <input type="color" id="color-control" value="#59b395" class="w-full h-10 rounded cursor-pointer" aria-label="Choose blade color">
                     </div>
                 </div>
             </div>
@@ -99,7 +104,7 @@
             </div>
         </div>
     </main>
-    <footer class="bg-gray-800 mt-12 p-8">
+    <footer class="bg-gray-800 mt-12 p-8" role="contentinfo">
         <div class="container mx-auto text-center">
             <p>© 2024 Spencience - Bridging Medieval Wisdom and Cosmic Evolution</p>
             <div class="mt-4">
@@ -137,7 +142,6 @@
 
         camera.position.z = 5;
 
-        // Control handlers
         document.getElementById('length-control').addEventListener('input', (e) => {
             sword.scale.y = parseFloat(e.target.value);
             document.getElementById('length-display').textContent = (parseFloat(e.target.value) * 10.5).toFixed(1);
@@ -151,6 +155,11 @@
         document.getElementById('thickness-control').addEventListener('input', (e) => {
             sword.scale.z = parseFloat(e.target.value);
             document.getElementById('thickness-display').textContent = parseFloat(e.target.value).toFixed(2);
+        });
+
+        document.getElementById('color-control').addEventListener('input', (e) => {
+            material.color.setStyle(e.target.value);
+            light.color.setStyle(e.target.value);
         });
 
         function animate() {
